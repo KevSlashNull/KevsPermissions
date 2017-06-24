@@ -1,5 +1,5 @@
 name: KevsPermissions
-version: 2.0
+version: 2.0.1
 author: KevSlashNull
 main: kevslashnull.permissions.PermissionsPlugin
 description: Maintain your server permissions now - performant and lightweight!
