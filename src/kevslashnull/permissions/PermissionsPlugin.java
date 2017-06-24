@@ -3,12 +3,15 @@ package kevslashnull.permissions;
 import java.util.logging.Level;
 
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import kevslashnull.permissions.commands.PermissionsCommand;
+import kevslashnull.permissions.ext.PermissionsVault;
 import kevslashnull.permissions.io.ConfigDataManger;
 import kevslashnull.permissions.io.DataManager;
 import kevslashnull.permissions.listener.ConnectionListener;
+import net.milkbowl.vault.permission.Permission;
 
 /**
  * @author KevSlashNull
@@ -69,6 +72,11 @@ public class PermissionsPlugin extends JavaPlugin {
 		getCommand("kp").setExecutor(new PermissionsCommand());
 		
 		getServer().getPluginManager().registerEvents(new ConnectionListener(), this);
+		
+		// Register into vault
+		
+		getServer().getServicesManager().register(Permission.class, new PermissionsVault(), this,
+				ServicePriority.Highest);
 	}
 	
 	public static PluginDetails currentVersion() {
