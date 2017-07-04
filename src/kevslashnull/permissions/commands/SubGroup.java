@@ -144,6 +144,11 @@ public class SubGroup {
 			if (args[2].equalsIgnoreCase("option")) {
 				PermissionsGroup g = KevsPermissions.getGroup(args[1]);
 				if (g != null) {
+					if (args[3].startsWith("kp_")) {
+						sender.sendMessage(PermissionsCommand.PREFIX
+								+ "§cSecurity Warning§8: §7You can not change any key starting with \"kp_\".");
+						return;
+					}
 					if (args[4].equalsIgnoreCase("-r"))
 						g.getMeta().setOption(args[3], null);
 					else

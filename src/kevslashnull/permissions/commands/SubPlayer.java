@@ -171,6 +171,11 @@ public class SubPlayer {
 			if (args[2].equalsIgnoreCase("option")) {
 				PermissionsPlayer g = KevsPermissions.getPlayer(Bukkit.getOfflinePlayer(args[1]));
 				if (g != null) {
+					if (args[3].startsWith("kp_")) {
+						sender.sendMessage(PermissionsCommand.PREFIX
+								+ "§cSecurity Warning§8: §7You can not change any key starting with \"kp_\".");
+						return;
+					}
 					if (args[4].equalsIgnoreCase("-r"))
 						g.getMeta().setOption(args[3], null);
 					else
